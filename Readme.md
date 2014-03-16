@@ -16,9 +16,9 @@
   var affix = require('affix');
   var el = document.getElementById('nav');
   affix(el, {
-    //minimal margin to the window top
+    //minimal margin to the body top
     top: 80,
-    //minimal margin to the window bottom
+    //minimal margin to the body bottom
     bottom: 200
   })
 ```
