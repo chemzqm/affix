@@ -4,6 +4,8 @@
 
   Just like what [bootstrap/affix](http://getbootstrap.com/javascript/#affix) did, but only simple javascript API.
 
+  [demo](http://chemzqm.github.io/affix/).
+
 ## Installation
 
   Install with [component(1)](http://component.io):
