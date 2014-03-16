@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>affix</title>
+  <script src="build/build.js"></script>
+  <style>
+    body {
+      font: 14px Helvetica;
+      padding: 0px;
+    }
+    #nav {
+      width: 100px;
+      padding: 5px;
+      height: 500px;
+      background-color: #ddd;
+    }
+    header,
+    footer {
+      background-color: #fcfcfc;
+      height: 200px;
+    }
+    .container {
+      width: 960px;
+      margin: 0 auto;
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  </header>
+  <div class="container">
+    <div id="nav">
+    </div>
+  </div>
+  <footer>
+  </footer>
+  <script>
+    var affix = require('affix');
+    var el = document.getElementById('nav');
+    affix(el, {
+      top: 80,
+      bottom: 200
+    });
+  </script>
+</body>
+</html>

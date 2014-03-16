@@ -1,0 +1,17 @@
+{
+  "name": "affix",
+  "repo": "chemzqm/affix",
+  "description": "fixed of fixed element",
+  "version": "0.0.1",
+  "keywords": ["fixed", "position"],
+  "dependencies": {
+    "anthonyshort/offset": "*",
+    "yields/scrolltop": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
