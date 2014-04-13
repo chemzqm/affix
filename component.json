@@ -2,11 +2,14 @@
   "name": "affix",
   "repo": "chemzqm/affix",
   "description": "fixed of fixed element",
-  "version": "0.0.1",
-  "keywords": ["fixed", "position"],
+  "version": "0.0.2",
+  "keywords": [
+    "fixed",
+    "position"
+  ],
   "dependencies": {
-    "anthonyshort/offset": "*",
-    "yields/scrolltop": "*"
+    "anthonyshort/offset": "0.0.1",
+    "yields/scrolltop": "0.0.1"
   },
   "development": {},
   "license": "MIT",
