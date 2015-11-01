@@ -1,5 +1,5 @@
 dev:
-	@open http://localhost:8080/example.html
+	@open http://localhost:8080/example/example.html
 	@gulp
 
 build: components index.js
