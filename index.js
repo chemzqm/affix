@@ -8,6 +8,16 @@ function scrollTop(){
     : document.body.scrollTop
 }
 
+/**
+ * Init affix with element and option
+ * `el` is target element
+ * `opt.top` is top number when scrolling
+ * `opt.bottom` is bottom number when scrolling
+ *
+ * @param {Element} el
+ * @param {Object} opt
+ * @api public
+ */
 function affix(el, opt) {
   if (!(this instanceof affix)) return new affix(el, opt)
   this.el = el

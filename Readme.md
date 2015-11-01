@@ -32,6 +32,10 @@
 
 ### affix(el, [option])
 
+* `el` is target element
+* `option.top` is top number when scrolling
+* `option.bottom` is bottom number when scrolling
+
 ## License
 
   The MIT License (MIT)
