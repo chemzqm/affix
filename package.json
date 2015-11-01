@@ -1,0 +1,36 @@
+{
+  "name": "affix-component",
+  "version": "0.0.3",
+  "description": "fix element when page scroll",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemzqm/affix.git"
+  },
+  "keywords": [
+    "affix"
+  ],
+  "author": "chemzqm@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chemzqm/affix/issues"
+  },
+  "homepage": "https://github.com/chemzqm/affix#readme",
+  "devDependencies": {
+    "connect-livereload": "^0.5.3",
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-serve": "^1.2.0",
+    "gulp-util": "^3.0.7",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "computed-style": "^0.3.0",
+    "offset": "0.0.1"
+  },
+  "browser": {}
+}

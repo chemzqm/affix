@@ -12,6 +12,10 @@
 
     $ component install chemzqm/affix
 
+  Install with npm:
+
+    $ npm install affix-component
+
 ## Example
 
 ``` js

@@ -7,8 +7,7 @@
     "position"
   ],
   "dependencies": {
-    "anthonyshort/offset": "0.0.1",
-    "yields/scrolltop": "0.0.1"
+    "anthonyshort/offset": "0.0.1"
   },
   "development": {
     "dependencies": {}

@@ -1,3 +1,6 @@
+dev:
+	@open http://localhost:8080/example.html
+	@gulp
 
 build: components index.js
 	@component build --dev
