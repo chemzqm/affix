@@ -29,7 +29,6 @@ function affix(el, opt) {
   this.bottom = opt.bottom || 0
   this.start = opt.top ? top - opt.top : 0
   this.top = opt.top || top
-  this.position = el.style.position
   this.setOrigin()
 
   var check = this.checkPosition.bind(this)
@@ -38,7 +37,7 @@ function affix(el, opt) {
 }
 
 affix.prototype.setOrigin = function () {
-  var props = ['top', 'left', 'right', 'bottom']
+  var props = ['top', 'left', 'right', 'bottom', 'position']
   var origin = this.origin
   var el = this.el
   props.forEach(function (prop) {
@@ -64,7 +63,7 @@ affix.prototype.checkPosition = function () {
     styleObj.left = this.left + 'px'
     styleObj.right = ''
   } else {
-    styleObj.position = this.position
+    styleObj.position = this.origin.position
     styleObj.left = this.origin.left
     styleObj.top = this.origin.top
   }
