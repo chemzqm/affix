@@ -21,7 +21,7 @@
   "homepage": "https://github.com/chemzqm/affix#readme",
   "devDependencies": {
     "connect-livereload": "^0.5.3",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-livereload": "^3.8.1",
     "gulp-serve": "^1.2.0",
     "gulp-util": "^3.0.7",
