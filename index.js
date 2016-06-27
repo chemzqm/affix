@@ -1,5 +1,7 @@
 var offset = require('offset')
 var computedStyle = require('computed-style')
+var body = document.body
+var doc = document.documentElement
 
 function scrollTop(){
   if (window.pageYOffset) return window.pageYOffset
@@ -48,7 +50,8 @@ affix.prototype.setOrigin = function () {
 affix.prototype.checkPosition = function () {
   var top = scrollTop()
   var h = this.el.clientHeight
-  var b = document.body.clientHeight - window.scrollY - h - this.top
+  var vh = Math.max(doc.clientHeight, window.innerHeight || 0)
+  var b = Math.max(vh, body.clientHeight) - window.scrollY - h - this.top
   var styleObj = this.el.style
   if (b < this.bottom) {
     this.el.style.position = 'fixed'
