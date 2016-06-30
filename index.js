@@ -1,14 +1,9 @@
-var offset = require('offset')
+var event = require('event')
+var offset = require('page-offset')
 var computedStyle = require('computed-style')
+var assign = require('object-assign')
 var body = document.body
 var doc = document.documentElement
-
-function scrollTop(){
-  if (window.pageYOffset) return window.pageYOffset
-  return document.documentElement.clientHeight
-    ? document.documentElement.scrollTop
-    : document.body.scrollTop
-}
 
 /**
  * Init affix with element and option
@@ -24,18 +19,25 @@ function affix(el, opt) {
   if (!(this instanceof affix)) return new affix(el, opt)
   this.el = el
   opt = opt || {}
-  var p = offset(el)
-  var top = p.top + document.body.scrollTop
-  this.left = p.left
+  var rect = el.getBoundingClientRect()
+  var top = rect.top + offset().y
+  var vw = document.compatMode === 'BackCompat' ? body.clientWidth : doc.clientWidth
+  if (rect.left > vw/2) {
+    this.right = (vw - rect.right) + 'px'
+    this.left = ''
+  } else {
+    this.right = ''
+    this.left = rect.left + 'px'
+  }
   this.origin = {}
   this.bottom = opt.bottom || 0
   this.start = opt.top ? top - opt.top : 0
   this.top = opt.top || top
   this.setOrigin()
 
-  var check = this.checkPosition.bind(this)
-  window.addEventListener('scroll', check)
-  setTimeout(check, 0)
+  var check = this._check = this.checkPosition.bind(this)
+  event.bind(window, 'scroll', check)
+  setTimeout(check, 20)
 }
 
 affix.prototype.setOrigin = function () {
@@ -48,28 +50,34 @@ affix.prototype.setOrigin = function () {
 }
 
 affix.prototype.checkPosition = function () {
-  var top = scrollTop()
   var h = this.el.clientHeight
   var vh = Math.max(doc.clientHeight, window.innerHeight || 0)
-  var b = Math.max(vh, body.clientHeight) - window.scrollY - h - this.top
+  var y = offset().y
+  var b = Math.max(vh, body.clientHeight) - y - h - this.top
   var styleObj = this.el.style
   if (b < this.bottom) {
-    this.el.style.position = 'fixed'
-    top = this.top - (this.bottom - b)
-    styleObj.top = top + 'px'
-    styleObj.left = this.left
-    styleObj.right = ''
+    var top = this.top - (this.bottom - b)
+    assign(styleObj, {
+      position: 'fixed',
+      top: top + 'px',
+      left: this.left,
+      right: this.right,
+    })
   }
-  else if (top > this.start) {
-    styleObj.position = 'fixed'
-    styleObj.top = this.top + 'px'
-    styleObj.left = this.left + 'px'
-    styleObj.right = ''
+  else if (y > this.start) {
+    assign(styleObj, {
+      position: 'fixed',
+      top: this.top + 'px',
+      left: this.left,
+      right: this.right,
+    })
   } else {
-    styleObj.position = this.origin.position
-    styleObj.left = this.origin.left
-    styleObj.top = this.origin.top
+    assign(styleObj, this.origin)
   }
+}
+
+affix.prototype.unbind = function () {
+  event.unbind(window, 'scroll', this._check)
 }
 
 module.exports = affix

@@ -29,8 +29,13 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "component-event": "^0.1.4",
     "computed-style": "^0.3.0",
-    "offset": "0.0.1"
+    "object-assign": "^4.1.0",
+    "offset": "0.0.1",
+    "page-offset": "^0.1.0"
   },
-  "browser": {}
+  "browser": {
+    "event": "component-event"
+  }
 }
