@@ -29,6 +29,8 @@ function affix(el, opt) {
     this.right = ''
     this.left = rect.left + 'px'
   }
+  if (opt.right === false) this.right = ''
+  if (opt.left === false) this.left = ''
   this.origin = {}
   this.bottom = opt.bottom || 0
   this.start = opt.top ? top - opt.top : 0
