@@ -8,10 +8,6 @@
 
 ## Installation
 
-  Install with [component(1)](http://component.io):
-
-    $ component install chemzqm/affix
-
   Install with npm:
 
     $ npm install affix-component
@@ -19,7 +15,7 @@
 ## Example
 
 ``` js
-  var affix = require('affix');
+  var affix = require('affix-component');
   var el = document.getElementById('nav');
   affix(el, {
     //minimal margin to the body top
@@ -40,7 +36,7 @@
 
   The MIT License (MIT)
 
-  Copyright (c) 2014 <copyright chemzqm@gmail.com>
+  Copyright (c) 2016 <copyright chemzqm@gmail.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
