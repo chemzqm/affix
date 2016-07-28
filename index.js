@@ -48,7 +48,7 @@ affix.prototype.setHolder = function () {
   var el = this.holder = document.createElement('div')
   el.style.height = this.el.clientHeight + 'px'
   el.style.width = this.el.clientWidth + 'px'
-  this.el.parentNode.appendChild(el)
+  this.el.parentNode.insertBefore(el, this.el)
 }
 
 affix.prototype.setOrigin = function () {
