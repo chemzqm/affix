@@ -66,7 +66,7 @@ affix.prototype.checkPosition = function () {
   var y = offset().y
   var b = Math.max(vh, body.clientHeight) - y - h - this.top
   var styleObj = this.el.style
-  if (b < this.bottom) {
+  if (this.bottom && b < this.bottom) {
     var top = this.top - (this.bottom - b)
     assign(styleObj, {
       position: 'fixed',
@@ -76,7 +76,7 @@ affix.prototype.checkPosition = function () {
     })
     this.setHolder()
   }
-  else if (y > this.start) {
+  else if (this.start && y > this.start) {
     assign(styleObj, {
       position: 'fixed',
       top: this.top + 'px',
