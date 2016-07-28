@@ -18,7 +18,8 @@ var doc = document.documentElement
 function affix(el, opt) {
   if (!(this instanceof affix)) return new affix(el, opt)
   this.el = el
-  opt = opt || {}
+  this.opt = opt = opt || {}
+  opt.scrollable = opt.scrollable || window
   var rect = el.getBoundingClientRect()
   var top = rect.top + offset().y
   var vw = document.compatMode === 'BackCompat' ? body.clientWidth : doc.clientWidth
@@ -38,8 +39,16 @@ function affix(el, opt) {
   this.setOrigin()
 
   var check = this._check = this.checkPosition.bind(this)
-  event.bind(window, 'scroll', check)
+  event.bind(opt.scrollable, 'scroll', check)
   setTimeout(check, 20)
+}
+
+affix.prototype.setHolder = function () {
+  if (!this.opt.holder || this.holder) return
+  var el = this.holder = document.createElement('div')
+  el.style.height = this.el.clientHeight + 'px'
+  el.style.width = this.el.clientWidth + 'px'
+  this.el.parentNode.appendChild(el)
 }
 
 affix.prototype.setOrigin = function () {
@@ -65,6 +74,7 @@ affix.prototype.checkPosition = function () {
       left: this.left,
       right: this.right,
     })
+    this.setHolder()
   }
   else if (y > this.start) {
     assign(styleObj, {
@@ -73,13 +83,21 @@ affix.prototype.checkPosition = function () {
       left: this.left,
       right: this.right,
     })
+    this.setHolder()
   } else {
     assign(styleObj, this.origin)
+    this.removeHolder()
   }
 }
 
+affix.prototype.removeHolder = function () {
+  if (this.holder && this.holder.parentNode) this.holder.parentNode.removeChild(this.holder)
+  this.holder = null
+}
+
 affix.prototype.unbind = function () {
-  event.unbind(window, 'scroll', this._check)
+  this.removeHolder()
+  event.unbind(this.opt.scrollable, 'scroll', this._check)
 }
 
 module.exports = affix
