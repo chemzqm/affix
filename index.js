@@ -68,22 +68,22 @@ affix.prototype.checkPosition = function () {
   var styleObj = this.el.style
   if (this.bottom && b < this.bottom) {
     var top = this.top - (this.bottom - b)
+    this.setHolder()
     assign(styleObj, {
       position: 'fixed',
       top: top + 'px',
       left: this.left,
       right: this.right,
     })
-    this.setHolder()
   }
   else if (this.start && y > this.start) {
+    this.setHolder()
     assign(styleObj, {
       position: 'fixed',
       top: this.top + 'px',
       left: this.left,
       right: this.right,
     })
-    this.setHolder()
   } else {
     assign(styleObj, this.origin)
     this.removeHolder()
