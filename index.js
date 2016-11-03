@@ -34,7 +34,7 @@ function affix(el, opt) {
   if (opt.left === false) this.left = ''
   this.origin = {}
   this.bottom = opt.bottom || 0
-  this.start = opt.top ? top - opt.top : 0
+  this.start = opt.top ? top - opt.top : null
   this.top = opt.top || top
   this.setOrigin()
 
@@ -76,7 +76,7 @@ affix.prototype.checkPosition = function () {
       right: this.right,
     })
   }
-  else if (this.start && y > this.start) {
+  else if (this.start != null && y > this.start) {
     this.setHolder()
     assign(styleObj, {
       position: 'fixed',
