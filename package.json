@@ -25,7 +25,7 @@
     "gulp-livereload": "^3.8.1",
     "gulp-serve": "^1.2.0",
     "gulp-util": "^3.0.7",
-    "webpack": "^1.12.2",
+    "webpack": "^1.12.13",
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
